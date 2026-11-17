@@ -1,0 +1,106 @@
+{
+  "ancestry_disparity_xgboost": [
+    {
+      "auc_group": 0.589,
+      "auc_ref": 0.599,
+      "condition": "curated_only",
+      "group": "SAS",
+      "hi_pct": 7.728,
+      "lo_pct": -3.873,
+      "model": "xgboost",
+      "n_group": 1211,
+      "rel_reduction_pct": 1.711
+    },
+    {
+      "auc_group": 0.576,
+      "auc_ref": 0.599,
+      "condition": "curated_only",
+      "group": "AFR",
+      "hi_pct": 8.778,
+      "lo_pct": -1.593,
+      "model": "xgboost",
+      "n_group": 1529,
+      "rel_reduction_pct": 3.819
+    },
+    {
+      "auc_group": 0.639,
+      "auc_ref": 0.653,
+      "condition": "rwe_augmented",
+      "group": "SAS",
+      "hi_pct": 7.181,
+      "lo_pct": -3.355,
+      "model": "xgboost",
+      "n_group": 1211,
+      "rel_reduction_pct": 2.19
+    },
+    {
+      "auc_group": 0.639,
+      "auc_ref": 0.653,
+      "condition": "rwe_augmented",
+      "group": "AFR",
+      "hi_pct": 6.232,
+      "lo_pct": -2.09,
+      "model": "xgboost",
+      "n_group": 1529,
+      "rel_reduction_pct": 2.129
+    }
+  ],
+  "delta_rwe_vs_curated": [
+    {
+      "auc_curated": 0.5984,
+      "auc_rwe": 0.6703,
+      "delta_auc": 0.0719,
+      "delta_hi": 0.0825,
+      "delta_lo": 0.0624,
+      "model": "xgboost",
+      "rel_hi_pct": 13.7785,
+      "rel_improvement_pct": 12.0164,
+      "rel_lo_pct": 10.4215
+    },
+    {
+      "auc_curated": 0.5896,
+      "auc_rwe": 0.6631,
+      "delta_auc": 0.0736,
+      "delta_hi": 0.0837,
+      "delta_lo": 0.0626,
+      "model": "random_forest",
+      "rel_hi_pct": 14.1952,
+      "rel_improvement_pct": 12.4827,
+      "rel_lo_pct": 10.6258
+    },
+    {
+      "auc_curated": 0.6152,
+      "auc_rwe": 0.6859,
+      "delta_auc": 0.0706,
+      "delta_hi": 0.0814,
+      "delta_lo": 0.0624,
+      "model": "logistic_regression",
+      "rel_hi_pct": 13.2245,
+      "rel_improvement_pct": 11.4764,
+      "rel_lo_pct": 10.1477
+    }
+  ],
+  "importance_share_pharmgkb_1AB": {
+    "CYP2C19_clopidogrel": 0.18,
+    "CYP2C9_VKORC1_warfarin": 0.18,
+    "DPYD_fluoropyrimidines": 0.154,
+    "SLCO1B1_statins": 0.178,
+    "TPMT_thiopurines": 0.162
+  },
+  "macro_auc": {
+    "logistic_regression": {
+      "curated_only": 0.6152,
+      "rwe_augmented": 0.6859
+    },
+    "random_forest": {
+      "curated_only": 0.5896,
+      "rwe_augmented": 0.6631
+    },
+    "xgboost": {
+      "curated_only": 0.5984,
+      "rwe_augmented": 0.6703
+    }
+  },
+  "note": "Synthetic-demo numbers say nothing about eMERGE-PGx; compare only against results from real data.",
+  "synthetic": true
+}

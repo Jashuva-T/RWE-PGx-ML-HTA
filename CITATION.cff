@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "rwe-pgx-ml-hta: RWE-augmented ML for pharmacogenomic response prediction with ancestry-stratified evaluation"
+authors:
+  - family-names: "T"
+    given-names: "Jashuva"
+  - family-names: "Mudigubba"
+    given-names: "Manoj Kumar"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-11-04

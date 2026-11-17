@@ -1,0 +1,28 @@
+# Configuration for rwe-pgx-ml-hta
+seed: 20261104
+data:
+  # real data (controlled access, not distributed): CSV with schema in data/README.md
+  patients_csv: data/raw/patients.csv
+  variant_catalog_csv: data/raw/variant_catalog.csv
+pairs: [CYP2C19_clopidogrel, CYP2C9_VKORC1_warfarin, SLCO1B1_statins, TPMT_thiopurines, DPYD_fluoropyrimidines]
+ancestries: [EUR, SAS, AFR, EAS, AMR]
+reference_ancestry: EUR
+disparity_groups: [SAS, AFR]
+conditions:
+  curated_only:    {variant_sources: [pharmgkb_1AB, clinvar], covariates: false}
+  rwe_augmented:   {variant_sources: [pharmgkb_1AB, clinvar, rwe], covariates: true}
+models: [xgboost, random_forest, logistic_regression]
+cv: {folds: 10, strata: ancestry_x_outcome}
+bootstrap: {n: 300}
+decision_curve_thresholds: [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50]
+model_params:
+  xgboost: {n_estimators: 200, max_depth: 3, learning_rate: 0.05, subsample: 0.8, colsample_bytree: 0.8, n_jobs: 1}
+  random_forest: {n_estimators: 200, min_samples_leaf: 5, n_jobs: 1}
+  logistic_regression: {C: 1.0, max_iter: 1000}
+# Toy data-generating process for the SYNTHETIC DEMO ONLY (not tuned to any published result).
+synthetic:
+  n_per_pair: 2500
+  ancestry_mix: {EUR: 0.70, SAS: 0.10, AFR: 0.12, EAS: 0.04, AMR: 0.04}
+  n_curated_variants: 6
+  n_rwe_variants: 10
+  base_rate: 0.25

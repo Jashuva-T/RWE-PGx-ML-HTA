@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rwe-pgx-ml-hta"
+version = "0.1.0"
+description = "Real-world-evidence-augmented ML for pharmacogenomic drug response prediction with ancestry-stratified evaluation for equitable HTA"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+authors = [{ name = "Jashuva T" }, { name = "Manoj Kumar Mudigubba" }]
+dependencies = ["numpy>=1.26", "scipy>=1.11", "pandas>=2.1", "scikit-learn>=1.4", "xgboost>=2.0", "matplotlib>=3.8", "pyyaml>=6.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
