@@ -3,7 +3,7 @@
 Real-world-evidence (RWE)-augmented machine learning for pharmacogenomic drug response prediction, with
 **ancestry-stratified evaluation** relevant to equitable health technology assessment (HTA).
 Companion code for the ISPOR Europe 2026 poster *"Integrating Real-World Pharmacogenomic Evidence with Machine Learning for Drug Response Prediction: Implications for Equitable Health Technology Assessment"*
-(Jashuva T, Mudigubba MK; RIPER, Anantapur, India). License: **Apache-2.0**.
+(Jashuva T). License: **Apache-2.0**.
 
 ## Read this first: what the included figures are
 
