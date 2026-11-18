@@ -18,6 +18,40 @@ jobs:
 
       - run: python -m rwe_pgx_ml.pipeline --config config/config.yaml --out results_ci --synthetic
 
+      - name: Diagnose CI environment and metrics
+        run: |
+          python - <<'PY'
+          import json
+          import platform
+          import sys
+          from importlib.metadata import version
+          from threadpoolctl import threadpool_info
+
+          print("Python:", sys.version)
+          print("Platform:", platform.platform())
+          print("Architecture:", platform.machine())
+
+          for package in [
+              "numpy", "scipy", "pandas", "scikit-learn",
+              "xgboost", "matplotlib", "joblib", "threadpoolctl"
+          ]:
+              print(f"{package}: {version(package)}")
+
+          print("\nNumerical library thread pools:")
+          for pool in threadpool_info():
+              print(pool)
+
+          with open("results_ci/summary.json") as f:
+              summary = json.load(f)
+
+          print("\nRandom Forest metrics:")
+          rf = next(
+              x for x in summary["delta_rwe_vs_curated"]
+              if x["model"] == "random_forest"
+          )
+          print(json.dumps(rf, indent=2))
+          PY
+
       - name: Compare reproducibility summary
         run: |
           python - <<'PY'
@@ -62,3 +96,12 @@ jobs:
 
           print("Reproducibility check passed.")
           PY
+
+      - name: Upload CI diagnostic outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-diagnostic-results
+          path: results_ci/
+          if-no-files-found: warn
+          retention-days: 7
