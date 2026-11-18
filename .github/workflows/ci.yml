@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test-and-demo:
-    runs-on: ubuntu-latest
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
 
